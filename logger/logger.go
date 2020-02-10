@@ -4,7 +4,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/go-kit/log"
+	"github.com/go-kit/kit/log"
 )
 
 type LogHandler interface {
