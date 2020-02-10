@@ -18,7 +18,7 @@ type Logger struct {
 	logger log.Logger
 }
 
-func New(appname string) (*LogHandler, error) {
+func New(appname string) (LogHandler, error) {
 	l := log.NewLogfmtLogger(log.NewSyncWriter(os.Stderr))
 	l = log.With(l, "ts", time.Now().String())
 	l = log.With(l, "appname", appname)
@@ -26,21 +26,21 @@ func New(appname string) (*LogHandler, error) {
 }
 
 func (l *Logger) Err(location string, code string, des string) {
-	l = log.With(l.logger, "level", "ERROR")
-	l.Log("reference", location, "code", code, "description", des)
+	logger := log.With(l.logger, "level", "ERROR")
+	logger.Log("reference", location, "code", code, "description", des)
 }
 
 func (l *Logger) Info(des string) {
-	l = log.With(l.logger, "level", "INFO")
-	l.Log("description", des)
+	logger := log.With(l.logger, "level", "INFO")
+	logger.Log("description", des)
 }
 
 func (l *Logger) Warn(location string, des string) {
-	l = log.With(l.logger, "level", "WARN")
-	l.Log("reference", location, "description", des)
+	logger := log.With(l.logger, "level", "WARN")
+	logger.Log("reference", location, "description", des)
 }
 
 func (l *Logger) Debug(des string) {
-	l = log.With(l.logger, "level", "DEBUG")
-	l.Log("description", des)
+	logger := log.With(l.logger, "level", "DEBUG")
+	logger.Log("description", des)
 }
