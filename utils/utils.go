@@ -44,3 +44,9 @@ func Marshal(obj interface{}) (string, error) {
 	}
 	return string(result), nil
 }
+
+func filepath() string {
+	_, fn, line, _ := runtime.Caller(0)
+
+	return fmt.Sprintf("file: %s, line: %d", fn, line)
+}
