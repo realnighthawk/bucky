@@ -8,10 +8,10 @@ import (
 )
 
 type LogHandler interface {
-	Err(code string, des string)
-	Debug(code string, des string)
-	Info(code string, des string)
-	Warn(code string, des string)
+	Err(location string, code string, des string)
+	Debug(des string)
+	Info(location string, des string)
+	Warn(des string)
 }
 
 type Logger struct {
