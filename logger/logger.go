@@ -10,8 +10,8 @@ import (
 type LogHandler interface {
 	Err(location string, code string, des string)
 	Debug(des string)
-	Info(location string, des string)
-	Warn(des string)
+	Info(des string)
+	Warn(location string, des string)
 }
 
 type Logger struct {
