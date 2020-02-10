@@ -37,10 +37,10 @@ func StrConcat(s ...string) string {
 	return buf.String()
 }
 
-func Marshal(obj interface{}) string {
+func Marshal(obj interface{}) (string, error) {
 	result, err := json.Marshal(obj)
 	if err != nil {
-		return ErrMarshal(err)
+		return " ", ErrMarshal(err)
 	}
-	return string(result)
+	return string(result), nil
 }
