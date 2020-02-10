@@ -15,7 +15,7 @@ type LogHandler interface {
 }
 
 type Logger struct {
-	logger *log.logger
+	logger log.logger
 }
 
 func New(appname string) (*LogHandler, error) {
