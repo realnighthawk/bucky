@@ -44,3 +44,7 @@ func (l *Logger) Debug(des string) {
 	logger := log.With(l.logger, "level", "DEBUG")
 	logger.Log("description", des)
 }
+
+func (l *Logger) With(key string, val string) {
+	return log.With(l.logger.key, value)
+}
