@@ -5,7 +5,6 @@ import (
 	"encoding/csv"
 	"io/ioutil"
 	"strings"
-	"time"
 )
 
 const (
@@ -16,11 +15,10 @@ const (
 var (
 	// gitVersionFilePath determines git generated version path
 	gitVersionFilePath = "./version"
-	startedAt          = time.Now().String()
 )
 
 // git method which allows fetch the git HEAD tag version and commit number
-func git() (version, commitHead string) {
+func Git() (version, commitHead string) {
 
 	b, _ := ioutil.ReadFile(gitVersionFilePath)
 	if b != nil {
