@@ -33,6 +33,18 @@ func New(appname string) (LogHandler, error) {
 	return &Logger{handler: log}, nil
 }
 
+func Log(description string, level string) {
+
+	logrus.WithFields(logrus.Fields{
+		"host":        host,
+		"app":         appname,
+		"ts":          time.Now().String(),
+		"country":     "",
+		"level":       level,
+		"description": description,
+	})
+}
+
 func (l *Logger) Err(code string, des string) {
 	l.handler.SetLevel(logrus.ErrorLevel)
 	l.handler.WithFields(logrus.Fields{
