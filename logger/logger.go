@@ -25,7 +25,7 @@ func New(appname string) (LogHandler, error) {
 	formatter := runtime.Formatter{ChildFormatter: &log.JSONFormatter{}}
 	formatter.Line = true
 
-	log = logrus.New()
+	log := logrus.New()
 	log.SetFormatter(&formatter)
 	log.Out = os.Stdout
 
@@ -40,8 +40,8 @@ func New(appname string) (LogHandler, error) {
 	return &Logger{handler: log}, nil
 }
 
-func Log(description string, level string) {
-
+func Log(appname string, description string, level string) {
+	host, _ := os.Hostname()
 	logrus.WithFields(logrus.Fields{
 		"host":    host,
 		"app":     appname,
