@@ -4,6 +4,7 @@ import (
 	"os"
 	"time"
 
+	runtime "github.com/banzaicloud/logrus-runtime-formatter"
 	"github.com/sirupsen/logrus"
 )
 
@@ -11,15 +12,21 @@ type LogHandler interface {
 	Err(code string, des string)
 	Debug(des string)
 	Info(des string)
+	EnableDebug(b bool)
 }
 
 type Logger struct {
 	handler logrus.Logger
+	debug   bool
 }
 
 func New(appname string) (LogHandler, error) {
 
+	formatter := runtime.Formatter{ChildFormatter: &log.JSONFormatter{}}
+	formatter.Line = true
+
 	log = logrus.New()
+	log.SetFormatter(&formatter)
 	log.Out = os.Stdout
 
 	host, _ := os.Hostname()
@@ -36,13 +43,16 @@ func New(appname string) (LogHandler, error) {
 func Log(description string, level string) {
 
 	logrus.WithFields(logrus.Fields{
-		"host":        host,
-		"app":         appname,
-		"ts":          time.Now().String(),
-		"country":     "",
-		"level":       level,
-		"description": description,
-	})
+		"host":    host,
+		"app":     appname,
+		"ts":      time.Now().String(),
+		"country": "",
+		"level":   level,
+	}).Info(description)
+}
+
+func (l *Logger) EnableDebug(b bool) {
+	l.debug = b
 }
 
 func (l *Logger) Err(code string, des string) {
@@ -50,19 +60,17 @@ func (l *Logger) Err(code string, des string) {
 	l.handler.WithFields(logrus.Fields{
 		"code":        code,
 		"description": des,
-	})
+	}).Error(description)
 }
 
 func (l *Logger) Info(des string) {
 	l.handler.SetLevel(logrus.InfoLevel)
-	l.handler.WithFields(logrus.Fields{
-		"description": des,
-	})
+	l.Info(description)
 }
 
 func (l *Logger) Debug(des string) {
-	l.handler.SetLevel(logrus.DebugLevel)
-	l.handler.WithFields(logrus.Fields{
-		"description": des,
-	})
+	if l.debug {
+		l.handler.SetLevel(logrus.DebugLevel)
+		l.Debug(description)
+	}
 }
