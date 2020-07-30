@@ -16,17 +16,17 @@ type LogHandler interface {
 }
 
 type Logger struct {
-	handler logrus.Logger
+	handler *logrus.Logger
 	debug   bool
 }
 
 func New(appname string) (LogHandler, error) {
 
+	log := logrus.New()
 	formatter := runtime.Formatter{ChildFormatter: &log.JSONFormatter{}}
 	formatter.Line = true
 
-	log := logrus.New()
-	log.SetFormatter(&formatter)
+	logr.SetFormatter(&formatter)
 	log.Out = os.Stdout
 
 	host, _ := os.Hostname()
@@ -55,20 +55,19 @@ func (l *Logger) EnableDebug(b bool) {
 	l.debug = b
 }
 
-func (l *Logger) Err(code string, des string) {
+func (l *Logger) Err(code string, description string) {
 	l.handler.SetLevel(logrus.ErrorLevel)
 	l.handler.WithFields(logrus.Fields{
-		"code":        code,
-		"description": des,
+		"code": code,
 	}).Error(description)
 }
 
-func (l *Logger) Info(des string) {
+func (l *Logger) Info(description string) {
 	l.handler.SetLevel(logrus.InfoLevel)
 	l.Info(description)
 }
 
-func (l *Logger) Debug(des string) {
+func (l *Logger) Debug(description string) {
 	if l.debug {
 		l.handler.SetLevel(logrus.DebugLevel)
 		l.Debug(description)
