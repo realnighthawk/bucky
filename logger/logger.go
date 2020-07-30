@@ -7,7 +7,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-var logger Logger
+var logger *Logger
 
 type LogHandler interface {
 	Err(code string, des string)
