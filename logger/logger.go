@@ -23,10 +23,8 @@ type Logger struct {
 func New(appname string) (LogHandler, error) {
 
 	log := logrus.New()
-	formatter := runtime.Formatter{ChildFormatter: &log.JSONFormatter{}}
-	formatter.Line = true
 
-	logr.SetFormatter(&formatter)
+	log.SetFormatter(&logrus.JSONFormatter{})
 	log.Out = os.Stdout
 
 	host, _ := os.Hostname()
