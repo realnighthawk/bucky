@@ -7,6 +7,8 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+var logger Logger
+
 type LogHandler interface {
 	Err(code string, des string)
 	Debug(des string)
@@ -34,18 +36,13 @@ func New(appname string) (LogHandler, error) {
 		"country": "",
 	})
 
-	return &Logger{handler: log}, nil
+	logger = &Logger{handler: log}
+
+	return logger, nil
 }
 
-func Log(appname string, description string, level string) {
-	host, _ := os.Hostname()
-	logrus.WithFields(logrus.Fields{
-		"host":    host,
-		"app":     appname,
-		"ts":      time.Now().String(),
-		"country": "",
-		"level":   level,
-	}).Info(description)
+func Log(description string) {
+	logger.Info(description)
 }
 
 func (l *Logger) EnableDebug(b bool) {
