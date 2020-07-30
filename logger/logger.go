@@ -4,7 +4,6 @@ import (
 	"os"
 	"time"
 
-	runtime "github.com/banzaicloud/logrus-runtime-formatter"
 	"github.com/sirupsen/logrus"
 )
 
