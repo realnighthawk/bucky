@@ -8,9 +8,11 @@ github.com/golang/protobuf/ptypes/struct
 github.com/google/uuid
 # github.com/konsorten/go-windows-terminal-sequences v1.0.3
 github.com/konsorten/go-windows-terminal-sequences
+# github.com/kumarabd/appkit v0.1.0
+github.com/kumarabd/appkit/errors
 # github.com/sirupsen/logrus v1.6.0
 github.com/sirupsen/logrus
-# go.mongodb.org/mongo-driver v1.3.5
+# go.mongodb.org/mongo-driver v1.4.0
 go.mongodb.org/mongo-driver/bson
 go.mongodb.org/mongo-driver/bson/bsoncodec
 go.mongodb.org/mongo-driver/bson/bsonoptions
