@@ -30,10 +30,9 @@ func New(appname string) (LogHandler, error) {
 
 	host, _ := os.Hostname()
 	log.WithFields(logrus.Fields{
-		"host":    host,
-		"app":     appname,
-		"ts":      time.Now().String(),
-		"country": "",
+		"host": host,
+		"app":  appname,
+		"ts":   time.Now().String(),
 	})
 
 	logger = &Logger{handler: log}
@@ -50,20 +49,17 @@ func (l *Logger) EnableDebug(b bool) {
 }
 
 func (l *Logger) Err(code string, description string) {
-	l.handler.SetLevel(logrus.ErrorLevel)
 	l.handler.WithFields(logrus.Fields{
 		"code": code,
 	}).Error(description)
 }
 
 func (l *Logger) Info(description string) {
-	l.handler.SetLevel(logrus.InfoLevel)
-	l.Info(description)
+	l.handler.Info(description)
 }
 
 func (l *Logger) Debug(description string) {
 	if l.debug {
-		l.handler.SetLevel(logrus.DebugLevel)
-		l.Debug(description)
+		l.handler.Debug(description)
 	}
 }
