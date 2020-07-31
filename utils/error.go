@@ -1,6 +1,6 @@
 package utils
 
-import "github.com/kumarabd/appkit/errors"
+import "github.com/kumarabd/gokit/errors"
 
 func ErrUnmarshal(key string, err error) error {
 	return errors.New("ERR.UNMARSHAL", "Unmarshal error for key: "+key+", error: "+err.Error())
