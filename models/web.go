@@ -1,5 +1,7 @@
 package models
 
+import "time"
+
 type Request struct {
 	Meta string      `json:"meta,omitempty"`
 	Body interface{} `json:"body,omitempty"`
