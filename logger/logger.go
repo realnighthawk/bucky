@@ -9,7 +9,7 @@ import (
 
 var logger *Logger
 
-type LogHandler interface {
+type Handler interface {
 	Err(code string, des string)
 	Debug(des string)
 	Info(des string)
@@ -21,7 +21,7 @@ type Logger struct {
 	debug   bool
 }
 
-func New(appname string) (LogHandler, error) {
+func New(appname string) (Handler, error) {
 
 	log := logrus.New()
 
