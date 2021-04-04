@@ -1,24 +1,10 @@
-// Copyright 2021 Layer5, Inc.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 package provider
 
 import (
+	"encoding/json"
 	"sync"
 
-	"github.com/layer5io/meshkit/config"
-	"github.com/layer5io/meshkit/utils"
+	"github.com/kumarabd/gokit/config"
 )
 
 // Type InMem implements the config interface Handler for an in-memory configuration registry.
@@ -54,17 +40,17 @@ func (l *InMem) GetKey(key string) string {
 func (l *InMem) GetObject(key string, result interface{}) error {
 	l.mutex.Lock()
 	defer l.mutex.Unlock()
-	return utils.Unmarshal(l.store[key], result)
+	return json.Unmarshal([]byte(l.store[key]), result)
 }
 
 // SetObject sets an object value for the key
 func (l *InMem) SetObject(key string, value interface{}) error {
 	l.mutex.Lock()
-	val, err := utils.Marshal(value)
+	val, err := json.Marshal(value)
 	defer l.mutex.Unlock()
 	if err != nil {
 		return config.ErrInMem(err)
 	}
-	l.store[key] = val
+	l.store[key] = string(val)
 	return nil
 }
