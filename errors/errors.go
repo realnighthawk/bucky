@@ -1,8 +1,10 @@
 package errors
 
-import "strings"
+import (
+	"fmt"
+)
 
-func New(code string, severity Severity, description ...string) *Error {
+func New(code string, severity Severity, description ...interface{}) *Error {
 	return &Error{
 		Code:        code,
 		Severity:    severity,
@@ -10,7 +12,9 @@ func New(code string, severity Severity, description ...string) *Error {
 	}
 }
 
-func (e *Error) Error() string { return strings.Join(e.Description[:], ".") }
+func (e *Error) Error() string {
+	return fmt.Sprint(e.Description...)
+}
 
 func GetCode(err error) string {
 	if obj := err.(*Error); obj != nil && obj.Code != " " {
@@ -26,10 +30,10 @@ func GetSeverity(err error) Severity {
 	return NoneSeverity
 }
 
-func Is(err error) (*Error, bool) {
+func Is(err error) bool {
 	if err != nil {
-		er, ok := err.(*Error)
-		return er, ok
+		_, ok := err.(*Error)
+		return ok
 	}
-	return nil, false
+	return false
 }

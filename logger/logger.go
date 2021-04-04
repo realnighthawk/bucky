@@ -12,6 +12,9 @@ type Handler interface {
 	Info(description ...interface{})
 	Debug(description ...interface{})
 	Error(err error)
+	Warn(err error)
+	WithField(string, interface{})
+	WithFields(map[string]interface{})
 }
 
 type Logger struct {
@@ -46,10 +49,21 @@ func New(appname string, opts Options) (Handler, error) {
 }
 
 func (l *Logger) Error(err error) {
-	l.handler.WithFields(logrus.Fields{
-		"code":     errors.GetCode(err),
-		"severity": errors.GetSeverity(err),
-	}).Log(logrus.ErrorLevel, err.Error())
+	if errors.Is(err) {
+		l.handler.WithFields(logrus.Fields{
+			"code":     errors.GetCode(err),
+			"severity": errors.GetSeverity(err),
+		}).Log(logrus.ErrorLevel, err.Error())
+	}
+}
+
+func (l *Logger) Warn(err error) {
+	if errors.Is(err) {
+		l.handler.WithFields(logrus.Fields{
+			"code":     errors.GetCode(err),
+			"severity": errors.GetSeverity(err),
+		}).Log(logrus.WarnLevel, err.Error())
+	}
 }
 
 func (l *Logger) Info(description ...interface{}) {
@@ -62,4 +76,12 @@ func (l *Logger) Debug(description ...interface{}) {
 	l.handler.Log(logrus.DebugLevel,
 		description...,
 	)
+}
+
+func (l *Logger) WithField(s string, val interface{}) {
+	l.handler.WithField(s, val)
+}
+
+func (l *Logger) WithFields(d map[string]interface{}) {
+	l.handler.WithFields(logrus.Fields(d))
 }

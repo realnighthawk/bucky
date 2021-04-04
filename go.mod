@@ -4,7 +4,11 @@ go 1.13
 
 require (
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
+	github.com/gobuffalo/buffalo v0.16.21
+	github.com/gobuffalo/logger v1.0.3
+	github.com/gorilla/mux v1.8.0
 	github.com/kr/text v0.2.0 // indirect
+	github.com/labstack/echo/v4 v4.2.1
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/pelletier/go-toml v1.6.0 // indirect
 	github.com/sirupsen/logrus v1.7.0

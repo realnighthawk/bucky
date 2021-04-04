@@ -40,7 +40,11 @@ func (l *InMem) GetKey(key string) string {
 func (l *InMem) GetObject(key string, result interface{}) error {
 	l.mutex.Lock()
 	defer l.mutex.Unlock()
-	return json.Unmarshal([]byte(l.store[key]), result)
+	err := json.Unmarshal([]byte(l.store[key]), result)
+	if err != nil {
+		ErrGetObject(err)
+	}
+	return nil
 }
 
 // SetObject sets an object value for the key
@@ -49,7 +53,7 @@ func (l *InMem) SetObject(key string, value interface{}) error {
 	val, err := json.Marshal(value)
 	defer l.mutex.Unlock()
 	if err != nil {
-		return config.ErrInMem(err)
+		return ErrSetObject(config.ErrInMem(err))
 	}
 	l.store[key] = string(val)
 	return nil

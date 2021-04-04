@@ -4,7 +4,7 @@ type (
 	Error struct {
 		Code        string
 		Severity    Severity
-		Description []string
+		Description []interface{}
 	}
 )
 

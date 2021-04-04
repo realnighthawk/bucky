@@ -68,7 +68,7 @@ func (v *Viper) GetObject(key string, result interface{}) error {
 	err := v.instance.UnmarshalKey(key, &result)
 	defer v.mutex.Unlock()
 	if err != nil {
-		return config.ErrViper(err)
+		return ErrGetObject(config.ErrViper(err))
 	}
 	return err
 }
@@ -79,7 +79,7 @@ func (v *Viper) SetObject(key string, value interface{}) error {
 	err := v.instance.WriteConfig()
 	defer v.mutex.Unlock()
 	if err != nil {
-		return config.ErrViper(err)
+		return ErrSetObject(config.ErrViper(err))
 	}
 
 	return nil
