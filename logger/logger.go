@@ -4,62 +4,62 @@ import (
 	"os"
 	"time"
 
+	"github.com/kumarabd/gokit/errors"
 	"github.com/sirupsen/logrus"
 )
 
-var logger *Logger
-
 type Handler interface {
-	Err(code string, des string)
-	Debug(des string)
-	Info(des string)
-	EnableDebug(b bool)
+	Info(description ...interface{})
+	Debug(description ...interface{})
+	Error(err error)
 }
 
 type Logger struct {
-	handler *logrus.Logger
-	debug   bool
+	handler *logrus.Entry
 }
 
-func New(appname string) (Handler, error) {
+func New(appname string, opts Options) (Handler, error) {
 
 	log := logrus.New()
 
-	log.SetFormatter(&logrus.JSONFormatter{})
-	log.Out = os.Stdout
+	switch opts.Format {
+	case JsonLogFormat:
+		log.SetFormatter(&logrus.JSONFormatter{
+			TimestampFormat: time.RFC3339,
+		})
+	case SyslogLogFormat:
+		log.SetFormatter(&logrus.TextFormatter{
+			TimestampFormat: time.RFC3339,
+			FullTimestamp:   true,
+		})
+	}
 
-	host, _ := os.Hostname()
-	log.WithFields(logrus.Fields{
-		"host": host,
-		"app":  appname,
-		"ts":   time.Now().String(),
+	// log.SetReportCaller(true)
+	log.SetOutput(os.Stdout)
+	entry := log.WithFields(logrus.Fields{
+		"app": appname,
 	})
 
-	logger = &Logger{handler: log}
-
-	return logger, nil
+	return &Logger{
+		handler: entry,
+	}, nil
 }
 
-func Log(description string) {
-	logger.Info(description)
-}
-
-func (l *Logger) EnableDebug(b bool) {
-	l.debug = b
-}
-
-func (l *Logger) Err(code string, description string) {
+func (l *Logger) Error(err error) {
 	l.handler.WithFields(logrus.Fields{
-		"code": code,
-	}).Error(description)
+		"code":     errors.GetCode(err),
+		"severity": errors.GetSeverity(err),
+	}).Log(logrus.ErrorLevel, err.Error())
 }
 
-func (l *Logger) Info(description string) {
-	l.handler.Info(description)
+func (l *Logger) Info(description ...interface{}) {
+	l.handler.Log(logrus.InfoLevel,
+		description...,
+	)
 }
 
-func (l *Logger) Debug(description string) {
-	if l.debug {
-		l.handler.Debug(description)
-	}
+func (l *Logger) Debug(description ...interface{}) {
+	l.handler.Log(logrus.DebugLevel,
+		description...,
+	)
 }

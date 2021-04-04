@@ -1,27 +1,29 @@
 package errors
 
-type (
-	Error struct {
-		Code        string
-		Description string
-	}
-)
+import "strings"
 
-func New(code string, description string, doc ...string) *Error {
+func New(code string, severity Severity, description ...string) *Error {
 	return &Error{
 		Code:        code,
+		Severity:    severity,
 		Description: description,
 	}
 }
 
-func (e *Error) Error() string { return e.Description }
+func (e *Error) Error() string { return strings.Join(e.Description[:], ".") }
 
 func GetCode(err error) string {
-
-	if errVal := err.(*Error); errVal != nil {
-		return errVal.Code
+	if obj := err.(*Error); obj != nil && obj.Code != " " {
+		return obj.Code
 	}
-	return " "
+	return ""
+}
+
+func GetSeverity(err error) Severity {
+	if obj := err.(*Error); obj != nil {
+		return obj.Severity
+	}
+	return NoneSeverity
 }
 
 func Is(err error) (*Error, bool) {
