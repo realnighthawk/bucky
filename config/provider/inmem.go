@@ -42,7 +42,7 @@ func (l *InMem) GetObject(key string, result interface{}) error {
 	defer l.mutex.Unlock()
 	err := json.Unmarshal([]byte(l.store[key]), result)
 	if err != nil {
-		ErrGetObject(err)
+		return ErrGetObject(err)
 	}
 	return nil
 }
