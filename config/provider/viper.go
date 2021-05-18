@@ -9,8 +9,11 @@ import (
 )
 
 const (
+	// FilePath the path to store the config file
 	FilePath = "filepath"
+	// FileType the type of the config file
 	FileType = "filetype"
+	// FileName the name of the config file
 	FileName = "filename"
 )
 

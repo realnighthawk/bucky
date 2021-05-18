@@ -1,7 +1,9 @@
 package logger
 
 const (
+	// JsonLogFormat is json based logging format
 	JsonLogFormat = iota
+	// SyslogLogFormat is syslog based logging format
 	SyslogLogFormat
 )
 
