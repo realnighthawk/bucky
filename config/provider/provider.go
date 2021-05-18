@@ -2,12 +2,13 @@
 package provider
 
 const (
-	// Provider keys
+	// ViperKey corresponds to viper configuration
 	ViperKey = "viper"
+	// InMemKey corresponds to in memory configuration
 	InMemKey = "in-memory"
 )
 
-// Type Options contains config options for various aspects of an adapter.
+// Options contains config options for various aspects of an adapter.
 type Options struct {
 	FilePath string
 	FileType string

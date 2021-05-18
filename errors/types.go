@@ -1,6 +1,7 @@
 package errors
 
 type (
+	// Error defines the attributes of an error
 	Error struct {
 		Code        string
 		Severity    Severity
@@ -8,13 +9,20 @@ type (
 	}
 )
 
+// Severity describes the severity level of the error
 type Severity string
 
 const (
-	Emergency    Severity = "emergency"
+	// Emergency level severity
+	Emergency Severity = "emergency"
+	// NoneSeverity level severity
 	NoneSeverity Severity = "none"
-	Warn         Severity = "warn"
-	Alert        Severity = "alert"
-	Critical     Severity = "critical"
-	Fatal        Severity = "fatal"
+	// Warn level severity
+	Warn Severity = "warn"
+	// Alert level severity
+	Alert Severity = "alert"
+	// Critical level severity
+	Critical Severity = "critical"
+	// Fatal level severity
+	Fatal Severity = "fatal"
 )
