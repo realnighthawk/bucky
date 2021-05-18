@@ -1,6 +1,6 @@
 # Bucky Web Toolkit
 
-<img align="right" width="159px" src="https://raw.githubusercontent.com/gin-gonic/logo/master/color.png">
+<img align="right" width="159px" src="https://github.com/kumarabd/gokit/blob/master/assets/bucky.png">
 
 [![Build Status](https://travis-ci.org/gin-gonic/gin.svg)](https://travis-ci.org/gin-gonic/gin)
 [![codecov](https://codecov.io/gh/gin-gonic/gin/branch/master/graph/badge.svg)](https://codecov.io/gh/gin-gonic/gin)
@@ -74,4 +74,8 @@ Bucky uses a custom version of [HttpRouter](https://github.com/julienschmidt/htt
 Awesome project lists using [Bucky](https://github.com/kumarabd/bucky) web framework.
 
 * [krypton](https://github.com/kumarabd/krypton): A foundation framework written in Go.
+
+## The gopher
+
+The gopher used here was created using [Gopherize.me](https://gopherize.me/). WebGo stays out of developers' way, so sitback and enjoy a cup of coffee like this gopher.
 
