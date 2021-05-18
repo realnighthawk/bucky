@@ -7,7 +7,7 @@ import (
 	"github.com/kumarabd/gokit/config"
 )
 
-// Type InMem implements the config interface Handler for an in-memory configuration registry.
+// InMem implements the config interface Handler for an in-memory configuration registry.
 type InMem struct {
 	store map[string]string
 	mutex sync.Mutex

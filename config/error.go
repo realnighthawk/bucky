@@ -14,7 +14,7 @@ func ErrViper(err error) error {
 	return errors.New("", errors.NoneSeverity, "Viper initialization failed with error", err.Error())
 }
 
-// ErrViper returns a error wrapping err in case of an (initialization) error in the in-memory provider.
+// ErrInMem returns a error wrapping err in case of an (initialization) error in the in-memory provider.
 func ErrInMem(err error) error {
 	return errors.New("", errors.NoneSeverity, "In Memory initialization failed with error", err.Error())
 }

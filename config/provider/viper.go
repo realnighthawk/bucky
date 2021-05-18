@@ -9,12 +9,15 @@ import (
 )
 
 const (
+	// FilePath the path to store the config file
 	FilePath = "filepath"
+	// FileType the type of the config file
 	FileType = "filetype"
+	// FileName the name of the config file
 	FileName = "filename"
 )
 
-// Type Viper implements the config interface Handler for a Viper configuration registry.
+// Viper implements the config interface Handler for a Viper configuration registry.
 type Viper struct {
 	instance *viper.Viper
 	mutex    sync.Mutex
@@ -48,6 +51,7 @@ func NewViper(opts Options) (config.Handler, error) {
 	}, nil
 }
 
+// SetKey implements SetKey functionality of the interface
 func (v *Viper) SetKey(key string, value string) {
 	v.mutex.Lock()
 	v.instance.Set(key, value)
@@ -55,6 +59,7 @@ func (v *Viper) SetKey(key string, value string) {
 	v.mutex.Unlock()
 }
 
+// GetKey implements GetKey functionality of the interface
 func (v *Viper) GetKey(key string) string {
 	v.mutex.Lock()
 	_ = v.instance.ReadInConfig()
@@ -62,6 +67,7 @@ func (v *Viper) GetKey(key string) string {
 	return v.instance.Get(key).(string)
 }
 
+// GetObject implements GetObject functionality of the interface
 func (v *Viper) GetObject(key string, result interface{}) error {
 	v.mutex.Lock()
 	_ = v.instance.ReadInConfig()
@@ -73,6 +79,7 @@ func (v *Viper) GetObject(key string, result interface{}) error {
 	return err
 }
 
+// SetObject implements SetObject functionality of the interface
 func (v *Viper) SetObject(key string, value interface{}) error {
 	v.mutex.Lock()
 	v.instance.Set(key, value)
