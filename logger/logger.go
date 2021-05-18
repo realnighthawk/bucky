@@ -29,7 +29,7 @@ func New(appname string, opts Options) (Handler, error) {
 	log := logrus.New()
 
 	switch opts.Format {
-	case JsonLogFormat:
+	case JSONLogFormat:
 		log.SetFormatter(&logrus.JSONFormatter{
 			TimestampFormat: time.RFC3339,
 		})
