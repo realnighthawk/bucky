@@ -8,6 +8,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// Handler is the interface for bucky logger
 type Handler interface {
 	Info(description ...interface{})
 	Debug(description ...interface{})
@@ -17,10 +18,12 @@ type Handler interface {
 	WithFields(map[string]interface{})
 }
 
+// Logger is the implementation of Handler interface
 type Logger struct {
 	handler *logrus.Entry
 }
 
+// New instantiates bucky logger instance
 func New(appname string, opts Options) (Handler, error) {
 
 	log := logrus.New()
@@ -48,6 +51,7 @@ func New(appname string, opts Options) (Handler, error) {
 	}, nil
 }
 
+// Error logs for log-level error
 func (l *Logger) Error(err error) {
 	if errors.Is(err) {
 		l.handler.WithFields(logrus.Fields{
@@ -57,6 +61,7 @@ func (l *Logger) Error(err error) {
 	}
 }
 
+// Warn logs for log-level warning
 func (l *Logger) Warn(err error) {
 	if errors.Is(err) {
 		l.handler.WithFields(logrus.Fields{
@@ -66,22 +71,26 @@ func (l *Logger) Warn(err error) {
 	}
 }
 
+// Info logs for log-level info
 func (l *Logger) Info(description ...interface{}) {
 	l.handler.Log(logrus.InfoLevel,
 		description...,
 	)
 }
 
+// Debug logs for log-level debug
 func (l *Logger) Debug(description ...interface{}) {
 	l.handler.Log(logrus.DebugLevel,
 		description...,
 	)
 }
 
+// WithField logs with added field
 func (l *Logger) WithField(s string, val interface{}) {
 	l.handler.WithField(s, val)
 }
 
+// WithFields logs with given added fields
 func (l *Logger) WithFields(d map[string]interface{}) {
 	l.handler.WithFields(logrus.Fields(d))
 }
