@@ -5,12 +5,13 @@
 [![Build Status](https://github.com/realnighthawk/bucky/actions/workflows/go.yml/badge.svg?branch=v0.0.1)
 [![codecov](https://codecov.io/gh/realnighthawk/bucky/branch/master/graph/badge.svg?token=8JUPZAA8ZW)](https://codecov.io/gh/realnighthawk/bucky)
 [![Go Report Card](https://goreportcard.com/badge/github.com/realnighthawk/bucky)](https://goreportcard.com/report/github.com/realnighthawk/bucky)
-[![GoDoc](https://pkg.go.dev/github.com/realnighthawk/bucky?status.svg)](https://pkg.go.dev/github.com/realnighthawk/bucky?tab=doc)
-[![Join the chat at https://gitter.im/gin-gonic/gin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gin-gonic/gin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Sourcegraph](https://sourcegraph.com/github.com/gin-gonic/gin/-/badge.svg)](https://sourcegraph.com/github.com/gin-gonic/gin?badge)
-[![Open Source Helpers](https://www.codetriage.com/gin-gonic/gin/badges/users.svg)](https://www.codetriage.com/gin-gonic/gin)
-[![Release](https://img.shields.io/github/release/gin-gonic/gin.svg?style=flat-square)](https://github.com/gin-gonic/gin/releases)
+<!--- [![GoDoc](https://pkg.go.dev/github.com/realnighthawk/bucky?status.svg)](https://pkg.go.dev/github.com/realnighthawk/bucky?tab=doc) 
+[![Join the chat at https://gitter.im/gin-gonic/gin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gin-gonic/gin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) 
 [![TODOs](https://badgen.net/https/api.tickgit.com/badgen/github.com/gin-gonic/gin)](https://www.tickgit.com/browse?repo=github.com/gin-gonic/gin)
+[![Sourcegraph](https://sourcegraph.com/github.com/gin-gonic/gin/-/badge.svg)](https://sourcegraph.com/github.com/gin-gonic/gin?badge)--->
+[![Open Source Helpers](https://www.codetriage.com/realnighthawk/bucky/badges/users.svg)](https://www.codetriage.com/realnighthawk/bucky)
+[![Release](https://img.shields.io/github/issues/realnighthawk/bucky)](https://github.com/realnighthawk/bucky/releases)
+
 
 Golang based library/toolkit for building Microservices written in Go (Golang). It is as durable as the [vibranium](https://marvel.fandom.com/wiki/Vibranium), which is also up to 40 times faster. If you are in need of full packed features and good productivity, bucky is your guy.
 
