@@ -3,10 +3,9 @@ name: Golang Static Checks
 on:
   pull_request:
     branches: [ master ]
-  push:
-    tags:
-      - 'v*'
-
+  release:
+    types: # This configuration does not affect the page_build event above
+      - created
 jobs:
   fmt:
     name: Run FMT
