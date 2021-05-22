@@ -3,7 +3,7 @@
 <img align="right" width="159px" src="https://github.com/kumarabd/gokit/blob/master/assets/bucky.png">
 
 [![Build Status](https://github.com/realnighthawk/bucky/actions/workflows/go.yml/badge.svg?branch=v0.0.1)
-[![codecov](https://codecov.io/gh/gin-gonic/gin/branch/master/graph/badge.svg)](https://codecov.io/gh/gin-gonic/gin)
+[![codecov](https://codecov.io/gh/realnighthawk/bucky/branch/master/graph/badge.svg?token=8JUPZAA8ZW)](https://codecov.io/gh/realnighthawk/bucky)
 [![Go Report Card](https://goreportcard.com/badge/github.com/gin-gonic/gin)](https://goreportcard.com/report/github.com/gin-gonic/gin)
 [![GoDoc](https://pkg.go.dev/badge/github.com/gin-gonic/gin?status.svg)](https://pkg.go.dev/github.com/gin-gonic/gin?tab=doc)
 [![Join the chat at https://gitter.im/gin-gonic/gin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gin-gonic/gin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
