@@ -3,6 +3,9 @@ name: Golang Static Checks
 on:
   pull_request:
     branches: [ master ]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   fmt:
