@@ -2,7 +2,7 @@
 
 <img align="right" width="159px" src="https://github.com/kumarabd/gokit/blob/master/assets/bucky.png">
 
-[![Build Status](https://github.com/realnighthawk/bucky/actions/workflows/go.yml/badge.svg?branch=master)
+[![Build Status](https://github.com/realnighthawk/bucky/actions/workflows/go.yml/badge.svg?branch=v0.0.1)
 [![codecov](https://codecov.io/gh/gin-gonic/gin/branch/master/graph/badge.svg)](https://codecov.io/gh/gin-gonic/gin)
 [![Go Report Card](https://goreportcard.com/badge/github.com/gin-gonic/gin)](https://goreportcard.com/report/github.com/gin-gonic/gin)
 [![GoDoc](https://pkg.go.dev/badge/github.com/gin-gonic/gin?status.svg)](https://pkg.go.dev/github.com/gin-gonic/gin?tab=doc)
