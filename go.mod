@@ -1,4 +1,4 @@
-module github.com/kumarabd/gokit
+module github.com/realnighthawk/bucky
 
 go 1.13
 
