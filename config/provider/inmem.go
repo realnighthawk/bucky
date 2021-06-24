@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"sync"
 
-	"github.com/kumarabd/gokit/config"
+	"github.com/realnighthawk/bucky/config"
 )
 
 // InMem implements the config interface Handler for an in-memory configuration registry.

@@ -1,7 +1,7 @@
 package provider
 
 import (
-	"github.com/kumarabd/gokit/errors"
+	"github.com/realnighthawk/bucky/errors"
 )
 
 // ErrGetObject returns error for get config

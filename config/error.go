@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/kumarabd/gokit/errors"
+	"github.com/realnighthawk/bucky/errors"
 )
 
 var (

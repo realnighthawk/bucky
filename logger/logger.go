@@ -4,7 +4,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/kumarabd/gokit/errors"
+	"github.com/realnighthawk/bucky/errors"
 	"github.com/sirupsen/logrus"
 )
 
@@ -12,8 +12,8 @@ import (
 type Handler interface {
 	Info(description ...interface{})
 	Debug(description ...interface{})
-	Error(err error)
 	Warn(err error)
+	Error(err error)
 	WithField(string, interface{})
 	WithFields(map[string]interface{})
 }
