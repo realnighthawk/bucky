@@ -4,8 +4,6 @@ package provider
 const (
 	// ViperKey corresponds to viper configuration
 	ViperKey = "viper"
-	// InMemKey corresponds to in memory configuration
-	InMemKey = "in-memory"
 )
 
 // Options contains config options for various aspects of an adapter.

@@ -74,7 +74,7 @@ func (v *Viper) GetObject(key string, result interface{}) error {
 	err := v.instance.UnmarshalKey(key, &result)
 	defer v.mutex.Unlock()
 	if err != nil {
-		return ErrGetObject(config.ErrViper(err))
+		return err
 	}
 	return err
 }
@@ -86,8 +86,20 @@ func (v *Viper) SetObject(key string, value interface{}) error {
 	err := v.instance.WriteConfig()
 	defer v.mutex.Unlock()
 	if err != nil {
-		return ErrSetObject(config.ErrViper(err))
+		return err
 	}
 
 	return nil
+}
+
+// GetAll implements GetAll functionality of the interface
+func (v *Viper) GetAll(result interface{}) error {
+	v.mutex.Lock()
+	_ = v.instance.ReadInConfig()
+	err := v.instance.Unmarshal(&result)
+	defer v.mutex.Unlock()
+	if err != nil {
+		return err
+	}
+	return err
 }

@@ -12,4 +12,7 @@ type Handler interface {
 	GetObject(key string, result interface{}) error
 	// SetObject is used to set an object for a given key and a given interface representing that object in result.
 	SetObject(key string, value interface{}) error
+
+	// GetAll is used to retrieve all objects.
+	GetAll(result interface{}) error
 }
