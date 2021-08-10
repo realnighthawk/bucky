@@ -35,7 +35,6 @@ func New(opts server.Options) (*httpServer, error) {
 		gin.SetMode(gin.DebugMode)
 	}
 
-	opts.Kind = server.HTTP
 	svc := &httpServer{
 		Options:   opts,
 		StartedAt: time.Now().String(),

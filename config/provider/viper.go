@@ -103,3 +103,8 @@ func (v *Viper) GetAll(result interface{}) error {
 	}
 	return err
 }
+
+// Is implements Is functionality of the interface
+func (v *Viper) Is(key string) bool {
+	return v.instance.IsSet(key)
+}

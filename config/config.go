@@ -15,4 +15,7 @@ type Handler interface {
 
 	// GetAll is used to retrieve all objects.
 	GetAll(result interface{}) error
+
+	// Is is used to check if a config is defined for a given key
+	Is(key string) bool
 }
