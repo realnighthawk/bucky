@@ -1,4 +1,4 @@
-package provider
+package viper
 
 import (
 	"fmt"
@@ -9,6 +9,8 @@ import (
 )
 
 const (
+	// ViperKey corresponds to viper configuration
+	ViperKey = "viper"
 	// FilePath the path to store the config file
 	FilePath = "filepath"
 	// FileType the type of the config file
@@ -17,6 +19,13 @@ const (
 	FileName = "filename"
 )
 
+// Options contains config options for various aspects of viper instance.
+type Options struct {
+	FilePath string
+	FileType string
+	FileName string
+}
+
 // Viper implements the config interface Handler for a Viper configuration registry.
 type Viper struct {
 	instance *viper.Viper
@@ -24,7 +33,7 @@ type Viper struct {
 }
 
 // NewViper returns a new instance of a Viper configuration provider using the provided Options opts.
-func NewViper(opts Options) (config.Handler, error) {
+func New(opts Options) (config.Handler, error) {
 	v := viper.New()
 	v.AddConfigPath(opts.FilePath)
 	v.SetConfigType(opts.FileType)
