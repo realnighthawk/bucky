@@ -1,4 +1,4 @@
-package http
+package gin
 
 import (
 	"net/http"
@@ -24,6 +24,6 @@ func pingHandler(ctx *gin.Context) {
 	}
 }
 
-func (svc *httpServer) statusHandler(ctx *gin.Context) {
-	ctx.JSON(200, svc)
+func (srv *Server) statusHandler(ctx *gin.Context) {
+	ctx.JSON(200, srv)
 }
